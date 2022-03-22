@@ -41,8 +41,15 @@
                                         <td>{{ $todos->firstItem() + $key }}</td>
                                         <td>{{ $todo->name }}</td>
                                         <td>{{ $todo->status }}</td>
-                                        <td><button class="btn btn-primary">Done</button></td>
-                                    </tr>
+                                        <td><button class="btn btn-primary">Done</button>
+                                        <form action="todos/{{ $todo->id}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete
+                                            </button>
+                                        </form>
+                                        </td>
+                                   </tr>
                                 @empty
                                     <tr>
                                         <td colspan="3">No Data Yet</td>
